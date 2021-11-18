@@ -1,0 +1,158 @@
+{
+  "project_info": {
+    "project_number": "792733659173",
+    "project_id": "dukkanapp",
+    "storage_bucket": "dukkanapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792733659173:android:94151b5edc8afc0ac30fcc",
+        "android_client_info": {
+          "package_name": "com.addukkan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792733659173-08ukjuvlbfg27eiffjojii1mqkvdvt7q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.addukkan",
+            "certificate_hash": "7b552dd45a17d41d57b3d3dedd9c4b6814f63960"
+          }
+        },
+        {
+          "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTBKS4opvJcZ6LvrZHEm1Vk9MtmrZnKgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "792733659173-1ej8aj1b3kidk58rqqb05qqbofofv1g9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.endpoint.Dukkan-Partners"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792733659173:android:7b2990509f6f247ac30fcc",
+        "android_client_info": {
+          "package_name": "com.addukkanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792733659173-ecnt50r6rt21l3cibad9s48qdop3ftks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.addukkanapp",
+            "certificate_hash": "d87bec293eb2e9788aa395b30912111ed09224c5"
+          }
+        },
+        {
+          "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTBKS4opvJcZ6LvrZHEm1Vk9MtmrZnKgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "792733659173-1ej8aj1b3kidk58rqqb05qqbofofv1g9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.endpoint.Dukkan-Partners"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792733659173:android:c54c0820b20dee86c30fcc",
+        "android_client_info": {
+          "package_name": "com.addukkanpartener"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792733659173-6q9hbcplqohur74t4ptnso91s53pvbpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.addukkanpartener",
+            "certificate_hash": "7b552dd45a17d41d57b3d3dedd9c4b6814f63960"
+          }
+        },
+        {
+          "client_id": "792733659173-d3np6dtt0ebsf40afjif49lgjd7qd12n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.addukkanpartener",
+            "certificate_hash": "cbed0537629bcbff873ba9602fa35e976bbb26b1"
+          }
+        },
+        {
+          "client_id": "792733659173-dcgh135t52v2os2dvcieqoq27hku1tme.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.addukkanpartener",
+            "certificate_hash": "fe866aba8eb4de7e615df20d88645cbde0c8ab1d"
+          }
+        },
+        {
+          "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTBKS4opvJcZ6LvrZHEm1Vk9MtmrZnKgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792733659173-bc5alg25ql7l63d8cm1vgm5lmcmlt7t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "792733659173-1ej8aj1b3kidk58rqqb05qqbofofv1g9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.endpoint.Dukkan-Partners"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="currency"
+            type="String" />
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.addukkanapp.models.SingleOrderModel.Data.Detials" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:contentPadding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+
+            <ImageView
+                image2="@{model.product_data.main_image}"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/wide" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{model.product_data.product_trans_fk.title}"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="1"
+                android:text="@{model.product_data.product_trans_fk.description}"
+                android:textColor="@color/gray11"
+                android:textSize="14sp" />
+
+            <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                android:id="@+id/simplarate"
+                rate="@{model.product_data.rate}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                app:srb_drawBorderEnabled="true"
+                app:srb_isIndicator="true"
+                app:srb_numberOfStars="5"
+                app:srb_starBackgroundColor="@color/white"
+                app:srb_starBorderWidth="3"
+                app:srb_starSize="13dp"
+                app:srb_starsSeparation="10dp"
+                app:srb_stepSize=".5" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tvOldprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:singleLine="true"
+                    android:text='@{model.product_data.product_default_price.price+currency}'
+                    android:textColor="@color/gray6"
+                    android:textSize="13sp"
+                    android:visibility='@{model.product_data.have_offer.equals("yes")?model.product_data.offer_type.equals("amount")?View.INVISIBLE:View.VISIBLE:View.INVISIBLE,default=invisible}'
+
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:text='@{(model.product_data.have_offer.equals("yes")&amp;&amp;!model.product_data.offer_type.equals("amount")?(model.product_data.offer_type.equals("value")?(model.product_data.product_default_price.price-model.product_data.offer_value)+"":(model.product_data.product_default_price.price-(model.product_data.product_default_price.price*model.product_data.offer_value/100))+""):model.product_data.product_default_price.price+"")+currency}'
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

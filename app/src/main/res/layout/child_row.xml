@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="model"
+            type="com.addukkanapp.models.ProductDataModel.Attribute" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor='@{model.is_default.equals("yes")?@color/colorPrimary:@color/white}'
+        app:contentPaddingLeft="16dp"
+        app:contentPaddingRight="16dp"
+        app:contentPaddingTop="5dp"
+        app:contentPaddingBottom="5dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="30dp"
+        android:layout_margin="5dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor='@{model.is_default.equals("yes")?@color/white:@color/black}'
+            android:textSize="16sp"
+            android:text="@{model.title}"
+            android:singleLine="true"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+</layout>

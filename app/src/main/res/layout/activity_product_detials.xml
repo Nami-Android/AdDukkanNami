@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+    <data>
+        <variable
+            name="currency"
+            type="String" />
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="model"
+            type="com.addukkanapp.models.SingleProductModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/llBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:padding="3dp"
+                        android:rotation='@{lang.equals("ar")?180:0}'
+                        android:src="@drawable/ic_left_arrow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+
+                        />
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/nested"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <FrameLayout
+                            android:id="@+id/fl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <FrameLayout
+                                android:id="@+id/flSlider"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp">
+
+
+                                <androidx.viewpager.widget.ViewPager
+                                    android:id="@+id/pager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                                <com.google.android.material.tabs.TabLayout
+                                    android:id="@+id/tab"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="7dp"
+                                    android:layout_gravity="bottom|center"
+                                    android:layout_marginBottom="20dp"
+                                    app:tabBackground="@drawable/tab_indicator"
+                                    app:tabGravity="fill"
+                                    app:tabIndicatorHeight="0dp"
+                                    app:tabMaxWidth="7dp"
+
+                                    app:tabMode="scrollable" />
+
+                            </FrameLayout>
+
+
+                            <FrameLayout
+                                android:id="@+id/flNoSlider"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:background="@color/gray1"
+                                android:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="48dp"
+                                        android:layout_height="48dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/ic_gallery"
+                                        app:tint="@color/gray3" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/no_image"
+                                        android:textColor="@color/gray4"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="15dp"
+                                    android:background="@drawable/small_rounded_primary"
+                                    android:gravity="center"
+                                    android:maxWidth="145dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingEnd="8dp"
+                                    android:singleLine="true"
+                                    android:text='@{model.offer_type.equals("per")?model.offer_value+"%":model.offer_type.equals("value")?model.offer_value+"":(@string/buy+model.offer_min+@string/and_got+model.offer_bonus+@string/bouns)}'
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp"
+                                    android:visibility='@{model.have_offer.equals("yes")?View.VISIBLE:View.GONE,default=gone}'
+                                    app:layout_constraintEnd_toStartOf="@+id/flcheck"
+                                    app:layout_constraintHorizontal_bias="0"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:ignore="RtlCompat" />
+
+                                <FrameLayout
+                                    android:id="@+id/flcheck"
+                                    android:layout_width="40dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:ignore="RtlCompat">
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="15dp"
+                                        android:button="@drawable/checkbox_bg"
+
+
+                                        />
+
+
+                                </FrameLayout>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="start"
+                            android:maxLines="2"
+                            android:text="@{model.product_trans_fk.title}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text='@{(model.have_offer.equals("yes")&amp;&amp;!model.offer_type.equals("amount")?(model.offer_type.equals("value")?(model.product_default_price.price-model.offer_value)+"":(model.product_default_price.price-(model.product_default_price.price*model.offer_value/100))+""):model.product_default_price.price+"")+currency}'
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvOldprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="3dp"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:singleLine="true"
+                                android:text='@{model.product_default_price.price+currency}'
+                                android:textColor="@color/gray6"
+                                android:textSize="13sp"
+                                android:visibility='@{model.have_offer.equals("yes")?model.offer_type.equals("amount")?View.INVISIBLE:View.VISIBLE:View.INVISIBLE,default=invisible}'
+
+                                />
+
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+
+                                android:gravity="center_vertical|end">
+
+                                <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                                    android:id="@+id/simplarate"
+
+                                    rate="@{model.rate}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|end"
+                                    android:gravity="center_vertical|end"
+                                    app:srb_drawBorderEnabled="true"
+                                    app:srb_isIndicator="true"
+                                    app:srb_numberOfStars="5"
+                                    app:srb_starBackgroundColor="@color/white"
+                                    app:srb_starBorderWidth="1"
+                                    app:srb_starSize="15dp"
+                                    app:srb_starsSeparation="10dp"
+                                    app:srb_stepSize=".5" />
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recViewParent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recViewChildren"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            />
+
+
+
+                        <com.google.android.material.tabs.TabLayout
+
+                            android:id="@+id/tab1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color6"
+                            app:tabBackground="@color/white"
+                            app:tabGravity="fill"
+
+                            app:tabIndicatorColor="@color/colorPrimary"
+                            app:tabIndicatorHeight="2dp"
+                            app:tabMode="fixed"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:tabSelectedTextColor="@color/colorPrimary"
+                            app:tabTextColor="@color/black" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tvDetails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray9"
+                                android:textSize="13sp"
+
+                                />
+                            <FrameLayout
+                                android:id="@+id/flComments"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                >
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recViewComments"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                                <TextView
+                                    android:id="@+id/tvNoData"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:layout_gravity="center"
+                                    android:text="@string/no_comments"
+                                    android:visibility="gone"
+                                    />
+                            </FrameLayout>
+
+
+                        </FrameLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="@string/similar_products"
+                            android:layout_marginTop="16dp"
+
+                            />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+
+                            >
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewProducts"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+
+                            <TextView
+                                android:id="@+id/tvNoProductData"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_gravity="center"
+                                android:text="@string/no_data_to_show"
+                                android:visibility="gone"
+                                />
+                        </FrameLayout>
+
+
+
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <ProgressBar
+                    android:id="@+id/progBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:text="@string/total"
+                    />
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:text="0.0"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:text=""
+                    />
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+
+                <TextView
+                    android:id="@+id/tvCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+                <ImageView
+                    android:id="@+id/imageIncrease"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/add"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>
